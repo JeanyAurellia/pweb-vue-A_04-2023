@@ -1,15 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-  <nav>
-      <RouterLink to="/" style="font-family: 'Salsa', cursive;
-; font-size: 25px; font-weight: 600; text-decoration: underline; color: black">TODO NOW</RouterLink>
-    <div class="kanan">
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/todo">To Do</RouterLink>
-    </div>
-  </nav>
+  <header>
+      <Navbar />
+  </header>
   <RouterView />
 </template>
+
+<style>
+.router-link-active {
+  @apply bg-red-300 text-white hover:text-white 
+}
+</style>
