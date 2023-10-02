@@ -7,6 +7,7 @@ export default {
     return {
       taskStore,
       inputTask: "",
+      inputKategori:"",
       inputDeadline: "",
     };
   },
@@ -14,16 +15,19 @@ export default {
     addTask() {
       if (
         this.inputTask === "" ||
+        this.inputKategori === "" ||
         this.inputDeadline === ""
       )
         return;
       const newTask = {
         id: Date.now().toString(),
         task: this.inputTask,
+        kategori:this.inputKategori,
         deadline: this.inputDeadline,
       };
       taskStore.createTask(newTask);
       this.inputTask = "";
+      this.inputKategori = "";
       this.inputDeadline = "";
       this.$emit("close-modal");
     },
@@ -38,14 +42,21 @@ export default {
       <label class="text-black font-bold">To Do</label>
       <input
         v-model="inputTask"
-        class="border-2 py-1 border-gray-400 rounded-lg"
+        class="border-2 py-1 border-gray-400 rounded-lg text-center"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="text-black font-bold">Kategori</label>
+      <input
+        v-model="inputKategori"
+        class="border-2 py-1 border-gray-400 rounded-lg text-center"
       />
     </div>
     <div class="flex flex-col gap-1">
       <label class="text-black font-bold">Deadline</label>
       <input
         v-model="inputDeadline"
-        class="border-2 py-1 border-gray-400 rounded-lg"
+        class="border-2 py-1 border-gray-400 rounded-lg text-center"
       />
     </div>
   </div>

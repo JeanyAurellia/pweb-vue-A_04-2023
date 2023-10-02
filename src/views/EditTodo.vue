@@ -13,6 +13,13 @@
           />
         </div>
         <div class="flex flex-col">
+          <label class="text-gray-700 font-semibold mb-3">Kategori</label>
+          <input
+            v-model="inputKategoriBaru"
+            class="border rounded-md px-4 py-2 border-pink-300 focus:outline-none focus:border-pink-500"
+          />
+        </div>
+        <div class="flex flex-col">
           <label class="text-gray-700 font-semibold mb-3">Deadline</label>
           <input
             v-model="inputDeadlineBaru"
@@ -39,6 +46,7 @@ export default {
       taskStore,
       id: this.$route.params.id,
       inputNewTask: "",
+      inputKategoriBaru:"",
       inputDeadlineBaru: "",
     };
   },
@@ -47,6 +55,7 @@ export default {
       const task = this.taskStore.tasks.find((task) => task.id === parseInt(this.id) || task.id === this.id);
       if (task) {
         this.inputNewTask = task.task;
+        this.inputKategoriBaru = task.deadline;
         this.inputDeadlineBaru = task.deadline;
       }
     },
@@ -54,6 +63,7 @@ export default {
         const updatedTask = {
             id: index,
             task: this.inputNewTask,
+            kategori: this.inputKategoriBaru,
             deadline: this.inputDeadlineBaru,
         };
         taskStore.editTask(updatedTask)

@@ -15,9 +15,11 @@ export default {
       <tr>
         <th class="p-1 text-sm font-bold tracking-normal">No.</th>
         <th class="p-3 text-sm font-bold tracking-normal">To Do</th>
+        <th class="p-1 text-sm font-bold tracking-normal">Kategori</th>
         <th class="p-1 text-sm font-bold tracking-normal">Deadline</th>
         <th class="p-1 text-sm font-bold tracking-normal">Delete</th>
         <th class="p-1 text-sm font-bold tracking-normal">Edit</th>
+        <th class="p-1 text-sm font-bold tracking-normal">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -25,12 +27,16 @@ export default {
         class="border-b hover:bg-pink-200"
         v-for="(task, index) in taskStore.tasks"
         :key="task.id"
+        :class="{ 'line-through': task.done }"
       >
         <th class="p-3 text-sm text-black font-normal">
           {{ index + 1 }}
         </th>
         <th class="p-3 text-sm text-black font-normal">
           {{ task.task }}
+        </th>
+        <th class="p-3 text-sm text-black font-normal">
+          {{ task.kategori }}
         </th>
         <th class="p-3 text-sm text-black font-normal">
           {{ task.deadline }}
@@ -67,7 +73,17 @@ export default {
             </router-link>
           </div>
         </th>
+        <th>
+          <div class="flex justify-center gap-4 items-center h-full w-full">
+            <input
+            type="checkbox"
+            v-model="task.done"
+            class="form-checkbox h-5 w-5 text-pink-600 transition duration-150 ease-in-out line-through"
+            />
+          </div>
+        </th>
       </tr>
     </tbody>
   </table>
+
 </template>

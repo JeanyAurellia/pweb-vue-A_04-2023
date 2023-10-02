@@ -38,4 +38,12 @@ export const taskStore = reactive({
     }
     saveTaskStore();
   },
+
+  toggleTask(checkedTask) {
+    const taskIndex = this.tasks.findIndex((task) => task.id === checkedTask.id);
+    if (taskIndex !== -1) {
+      this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
+      saveTaskStore();
+    }
+  }
 });
