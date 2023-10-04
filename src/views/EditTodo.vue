@@ -55,7 +55,7 @@ export default {
       const task = this.taskStore.tasks.find((task) => task.id === parseInt(this.id) || task.id === this.id);
       if (task) {
         this.inputNewTask = task.task;
-        this.inputKategoriBaru = task.deadline;
+        this.inputKategoriBaru = task.kategori;
         this.inputDeadlineBaru = task.deadline;
       }
     },
